@@ -45,7 +45,9 @@
           const { flag, message, token } = signInResult;
 
           if (flag) {
+            localStorage.setItem("token", token);
 
+            this.$router.push("/pathfinders");
           } else {
             this.signInErrorText = message
             this.signInError = true;

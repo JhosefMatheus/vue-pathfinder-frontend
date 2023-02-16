@@ -35,12 +35,9 @@
           const { flag, message } = signUpResult;
 
           if (flag) {
-            
+            console.log("Usuário cadastrado com sucesso!");
+            this.$router.push("/");
           } else {
-            console.log("o registro não deu certo");
-
-            console.log(message)
-
             this.signUpErrorText = message;
             this.signUpError = true;
           }

@@ -129,6 +129,5 @@ export default class UserModel {
                 message
             }
         }
-
     }
 }
