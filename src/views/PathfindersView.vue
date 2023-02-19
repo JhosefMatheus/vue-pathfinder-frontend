@@ -1,9 +1,24 @@
+<script setup>
+    import Header from "../components/pathfinders/Header.vue";
+    import SearchBar from "../components/pathfinders/SearchBar.vue";
+    import Table from "../components/pathfinders/Table.vue";
+</script>
+
 <script>
+    export default {
+        components: {
+            Header,
+            SearchBar,
+            Table
+        }
+    }
 </script>
 
 <template>
     <div class="container">
-        <h1>Página dos desbravadores</h1>
+        <Header />
+        <SearchBar />
+        <Table />
     </div>
 </template>
 

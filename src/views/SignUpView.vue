@@ -20,8 +20,8 @@
       }
     },
     methods: {
-      async signUp(e) {
-        const form = e.target;
+      async signUp() {
+        const form = this.$refs.signUpForm;
 
         if (!form.checkValidity()) {
           form.classList.add("was-validated");
@@ -61,7 +61,7 @@
 
 <template>
   <div class="container d-flex justify-content-center align-items-center h-100">
-    <form class="needs-validation" novalidate @submit.prevent.stop="signUp">
+    <form class="needs-validation" novalidate @submit.prevent.stop="signUp" ref="signUpForm">
       
       <div class="alert alert-warning alert-dismissible fade show p-3" role="alert" v-if="signUpError">
         <div class="d-flex justify-content-between w-100">

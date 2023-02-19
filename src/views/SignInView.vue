@@ -32,8 +32,8 @@
       setPassword(e) {
         this.password = e.target.value.trim();
       },
-      async signIn(e) {
-        const form = e.target;
+      async signIn() {
+        const form = this.$refs.signInForm;
 
         if (!form.checkValidity()) {
           form.classList.add("was-validated");
@@ -60,7 +60,7 @@
 
 <template>
   <div class="container d-flex justify-content-center align-items-center h-100">
-    <form class="needs-validation" novalidate @submit.prevent.stop="signIn">
+    <form class="needs-validation" novalidate @submit.prevent.stop="signIn" ref="signInForm">
       
       <div class="alert alert-warning alert-dismissible fade show p-3" role="alert" v-if="signInError">
         <div class="d-flex justify-content-between w-100">
