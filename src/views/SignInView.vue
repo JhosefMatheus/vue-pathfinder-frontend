@@ -60,7 +60,7 @@
 
 <template>
   <div class="container d-flex justify-content-center align-items-center h-100">
-    <form class="needs-validation" novalidate @submit.prevent.stop="signIn" ref="signInForm">
+    <form class="needs-validation d-flex flex-column" novalidate @submit.prevent.stop="signIn" ref="signInForm">
       
       <div class="alert alert-warning alert-dismissible fade show p-3" role="alert" v-if="signInError">
         <div class="d-flex justify-content-between w-100">
@@ -113,21 +113,22 @@
     text-decoration: underline;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 576px) {
     form {
       width: 100%;
-      display: flex;
-      flex-direction: column;
     }
   
   }
 
-  @media (min-width: 400px) {
+  @media (min-width: 576px) and (max-width: 1200px) {
     form {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
+      width: 75%;
     }
   }
-
+  
+  @media (min-width: 1200px){
+    form {
+      width: 50%;
+    }
+  }
 </style>

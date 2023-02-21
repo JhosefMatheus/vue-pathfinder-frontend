@@ -1,65 +1,65 @@
 import URL_API from "../config";
 
 export default class UserModel {
-    #id;
-    #fullName;
-    #login;
-    #password;
-    #confirmPassword;
+    $id;
+    $fullName;
+    $login;
+    $password;
+    $confirmPassword;
 
     
     constructor({ id, fullName, login, password, confirmPassword }) {
-        this.#id = id;
-        this.#fullName = fullName;
-        this.#login = login;
-        this.#password = password;
-        this.#confirmPassword = confirmPassword;
+        this.$id = id;
+        this.$fullName = fullName;
+        this.$login = login;
+        this.$password = password;
+        this.$confirmPassword = confirmPassword;
     }
 
     get id() {
-        return this.#id;
+        return this.$id;
     }
 
     set id(id) {
-        this.#id = id;
+        this.$id = id;
     }
 
     get fullName() {
-        return this.#fullName;
+        return this.$fullName;
     }
 
     set fullName(fullName) {
-        this.#fullName = fullName;
+        this.$fullName = fullName;
     }
 
     get login() {
-        return this.#login;
+        return this.$login;
     }
 
     set login(login) {
-        this.#login = login;
+        this.$login = login;
     }
 
     get password() {
-        return this.#password;
+        return this.$password;
     }
 
     set password(password) {
-        this.#password = password;
+        this.$password = password;
     }
 
     get confirmPassword() {
-        return this.#confirmPassword;
+        return this.$confirmPassword;
     }
 
     set confirmPassword(confirmPassword) {
-        this.#confirmPassword = confirmPassword;
+        this.$confirmPassword = confirmPassword;
     }
 
     async signIn() {
         const requestBody = {
-            login: this.#login,
-            password: this.#password
+            login: this.$login,
+            password: this.$password
         }
 
         const signInResponse = await fetch(`${URL_API}/auth/signIn`, {
@@ -90,7 +90,7 @@ export default class UserModel {
     }
 
     async signUp() {
-        if (this.#password !== this.#confirmPassword) {
+        if (this.$password !== this.$confirmPassword) {
             return {
                 flag: false,
                 message: "Campos de senha e confirmar senha não coincidem."
@@ -99,9 +99,9 @@ export default class UserModel {
             console.log("entrou no segundo if")
 
             const requestBody = {
-                fullName: this.#fullName,
-                login: this.#login,
-                password: this.#password
+                fullName: this.$fullName,
+                login: this.$login,
+                password: this.$password
             }
 
             const signUpResponse = await fetch(`${URL_API}/auth/signUp`, {

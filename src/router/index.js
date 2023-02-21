@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import SignInView from "../views/SignInView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import PathfindersView from "../views/PathfindersView.vue";
+import CreatePathfinderView from "../views/CreatePathfinderView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: "/pathfinders",
       name: "pathfinders",
       component: PathfindersView
+    },
+    {
+      path: "/create",
+      name: "create",
+      component: CreatePathfinderView
     }
   ],
 });
