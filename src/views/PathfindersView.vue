@@ -19,7 +19,7 @@
 
 <template>
     <PrivateRoute>
-        <Layout>
+        <Layout v-if="this.$store.state.user">
             <div class="container">
                 <Header />
                 <SearchBar />

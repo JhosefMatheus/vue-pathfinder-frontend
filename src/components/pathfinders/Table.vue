@@ -4,6 +4,22 @@
             return {
                 pathfinders: []
             }
+        },
+        methods: {
+            async deletePathfinder(e, pathfinder) {
+                const { flag, message } = await pathfinder.deletePathfinder();
+
+                if (flag) {
+                    this.$router.go();
+                }
+            }
+        },
+        async beforeCreate() {
+            const { flag, message, pathfinders } = await this.$store.state.user.getPathfinders();
+
+            if (flag) {
+                this.pathfinders = pathfinders;
+            }
         }
     }
 </script>
@@ -25,19 +41,19 @@
                     <button class="btn btn-primary class-option">
                         Classes
                     </button>
-                    <button class="btn btn-primary edit-option">
+                    <button class="btn btn-primary edit-option" @click="this.$router.push(`/edit/${pathfinder.id}`)">
                         Editar
                     </button>
-                    <button class="btn btn-danger delete-option">
+                    <button class="btn btn-danger delete-option" @click="deletePathfinder($event, pathfinder)">
                         Excluir
                     </button>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-button" data-bs-toggle="dropdown" aria-expanded="false"></button>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdown-button">
+                        <ul class="dropdown-menu pb-0" aria-labelledby="dropdown-button">
                             <li><a href="#" class="dropdown-item">Classes</a></li>
-                            <li><a href="#" class="dropdown-item">Editar</a></li>
-                            <li><a href="#" class="dropdown-item">Excluir</a></li>
+                            <li><a :href="`edit/${pathfinder.id}`" class="dropdown-item">Editar</a></li>
+                            <li><button class="btn btn-outline-danger m-0 w-100 border-0 delete-pathfinder-btn" @click.prevent.stop="deletePathfinder($event, pathfinder)">Excluir</button></li>
                         </ul>
                     </div>
                 </td>
@@ -47,12 +63,14 @@
 </template>
 
 <style scoped>
-    table {
-        overflow: hidden;
-    }
 
     .dropdown {
         display: none;
+    }
+
+    .delete-pathfinder-btn {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
     }
 
     @media (max-width: 576px) {

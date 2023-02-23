@@ -1,4 +1,5 @@
 import URL_API from "../config";
+import PathfinderModel from "./PathfinderModel";
 
 export default class UserModel {
     $id;
@@ -124,6 +125,34 @@ export default class UserModel {
                 }
             }
 
+            return {
+                flag: false,
+                message
+            }
+        }
+    }
+
+    async getPathfinders() {
+        const token = localStorage.getItem("token");
+
+        const getPathfindersResposne = await fetch(`${URL_API}/pathfinder/pathfinders/${this.$id}`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const { message, pathfinders } = await getPathfindersResposne.json();
+
+        if (getPathfindersResposne.status === 200) {
+            return {
+                flag: true,
+                message,
+                pathfinders: pathfinders.map(pathfinder => new PathfinderModel({ id: pathfinder.id, userId: pathfinder.userId, name: pathfinder.name }))
+            }
+        } else if (getPathfindersResposne.status === 401) {
             return {
                 flag: false,
                 message
