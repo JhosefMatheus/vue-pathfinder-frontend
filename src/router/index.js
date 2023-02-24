@@ -6,6 +6,7 @@ import PathfindersView from "../views/PathfindersView.vue";
 import CreatePathfinderView from "../views/CreatePathfinderView.vue";
 import EditPathfinderView from "../views/EditPathfinderView.vue";
 import PathfinderClassesView from "../views/PathfinderClassesView.vue"; 
+import PathfinderClassView from "../views/PathfinderClassView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: "/classes/:id",
       name: "pathfinderClasses",
       component: PathfinderClassesView
+    },
+    {
+      path: "/class/:classId/:pathfinderId",
+      name: "pathfinderClass",
+      component: PathfinderClassView
     }
   ],
 });

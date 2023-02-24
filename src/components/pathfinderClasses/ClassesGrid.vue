@@ -36,7 +36,7 @@
                     <p class="card-title"><strong>{{ currentClass.name }}</strong></p>
                     <div class="w-100 d-flex justify-content-between align-items-center">
                         <p>0% concluído</p>
-                        <button class="btn btn-primary">Ver classe</button>
+                        <button class="btn btn-primary" @click="this.$router.push(`/class/${currentClass.id}/${this.$route.params.id}`)">Ver classe</button>
                     </div>
                 </div>
             </div>
