@@ -30,9 +30,13 @@
 
             const currentPathfinder = new PathfinderModel({ id: pathfinderId, userId });
 
-            await currentPathfinder.getPathfinderData();
+            const { flag, message } = await currentPathfinder.getPathfinderData();
 
-            this.pathfinder = currentPathfinder;
+            if (flag) {
+                this.pathfinder = currentPathfinder;
+            } else {
+                this.$router.push("/pathfinders");
+            }
         }
     }
 </script>

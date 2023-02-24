@@ -35,7 +35,7 @@
     <div class="w-100 h-100 position-relative" @click="handlePopOver">
         <nav class="navbar navbar-expand-lg d-flex align-items-center p-2 shadow sticky-top bg-white">
             <i class="bi bi-person-plus-fill p-1" v-if="this.$route.name === 'pathfinders'" @click="this.$router.push('/create')"></i>
-            <i class="bi bi-person-lines-fill p-1" v-if="this.$route.name === 'create' || this.$route.name === 'editPathfinder'" @click="this.$router.push('/pathfinders')"></i>
+            <i class="bi bi-person-lines-fill p-1" v-if="this.$route.name === 'create' || this.$route.name === 'editPathfinder' || this.$route.name === 'pathfinderClasses'" @click="this.$router.push('/pathfinders')"></i>
             <i class="bi bi-person-circle p-1" ref="userIcon"></i>
         </nav>
         <Popover v-if="showPopOver"/>

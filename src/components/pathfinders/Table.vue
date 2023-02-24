@@ -38,7 +38,7 @@
                 <th scope="row" class="align-middle">{{ pathfinder.id }}</th>
                 <td class="align-middle">{{ pathfinder.name }}</td>
                 <td class="d-flex align-items-center options">
-                    <button class="btn btn-primary class-option">
+                    <button class="btn btn-primary class-option" @click="this.$router.push(`/classes/${pathfinder.id}`)">
                         Classes
                     </button>
                     <button class="btn btn-primary edit-option" @click="this.$router.push(`/edit/${pathfinder.id}`)">
@@ -51,7 +51,7 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-button" data-bs-toggle="dropdown" aria-expanded="false"></button>
 
                         <ul class="dropdown-menu pb-0" aria-labelledby="dropdown-button">
-                            <li><a href="#" class="dropdown-item">Classes</a></li>
+                            <li><a :href="`classes/${pathfinder.id}`" class="dropdown-item">Classes</a></li>
                             <li><a :href="`edit/${pathfinder.id}`" class="dropdown-item">Editar</a></li>
                             <li><button class="btn btn-outline-danger m-0 w-100 border-0 delete-pathfinder-btn" @click.prevent.stop="deletePathfinder($event, pathfinder)">Excluir</button></li>
                         </ul>

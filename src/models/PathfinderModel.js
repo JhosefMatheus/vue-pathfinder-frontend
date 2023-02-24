@@ -155,4 +155,23 @@ export default class PathfinderModel {
             }
         }
     }
+
+    async getClasses() {
+        const token = localStorage.getItem("token");
+
+        const getClassesResponse = await fetch(`${URL_API}/class/classes`, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const { classes } = await getClassesResponse.json();
+
+        return {
+            classes
+        }
+    }
 }
