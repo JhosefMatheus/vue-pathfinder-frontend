@@ -1,9 +1,13 @@
 <script setup>
     import RequirementGroupsModel from "../../models/RequirementGroupsModel";
+    import Requirements from './Requirements.vue';
 </script>
 
 <script>
     export default {
+        components: {
+            Requirements
+        },
         data() {
             return {
                 requirementGroups: []
@@ -15,18 +19,27 @@
             await newRequirementGroups.getRequirementGroups();
 
             this.requirementGroups = newRequirementGroups;
-
-            console.log(this.requirementGroups);
         }
     }
 </script>
 
 <template>
-    <ol type="I">
-        <strong><li v-for="requirementGroup in requirementGroups.requirementGroups" :key="requirementGroup.id">{{ requirementGroup.name }}</li></strong>
+    <ol type="I" class="mt-4">
+            <li v-for="requirementGroup in requirementGroups.requirementGroups" :key="requirementGroup.id" class="requirementGroup">
+                <strong>
+                    {{ requirementGroup.name }}
+                </strong>
+                <Requirements
+                    :classId="this.$route.params.classId"
+                    :requirementGroupId="requirementGroup.id"
+                />
+            </li>
     </ol>
 </template>
 
 <style scoped>
-
+    .requirementGroup {
+        font-size: 1.275rem;
+        color: #5a5c5e;
+    }
 </style>
