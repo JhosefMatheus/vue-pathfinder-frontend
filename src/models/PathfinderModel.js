@@ -1,4 +1,5 @@
 import URL_API from "../config";
+import ClassModel from "./ClassModel";
 
 export default class PathfinderModel {
     $id;
@@ -170,8 +171,14 @@ export default class PathfinderModel {
 
         const { classes } = await getClassesResponse.json();
 
+        const classesModel = classes.map(c => new ClassModel({
+            id: c.id,
+            classImage: c.classImage,
+            name: c.name
+        }));
+
         return {
-            classes
+            classes: classesModel
         }
     }
 }

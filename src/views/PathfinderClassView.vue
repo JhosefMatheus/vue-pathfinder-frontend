@@ -3,6 +3,7 @@
     import Layout from '../components/general/Layout.vue';
     import Header from "../components/PathfinderClass/Header.vue";
     import RequirementGroups from '../components/PathfinderClass/RequirementGroups.vue';
+    import RequirementsModel from '../models/RequirementsModel';
 </script>
 
 <script>
@@ -12,8 +13,12 @@
             Layout
         },
         methods: {
-            saveRequirements() {
-                console.log(this.$store.state.requirements);
+            async saveRequirements() {
+                const newRequirementsModel = new RequirementsModel({ requirements: this.$store.state.requirements });
+                
+                await newRequirementsModel.saveRequirements(parseInt(this.$route.params.pathfinderId));
+
+                this.$router.push("/pathfinders");
             }
         },
         beforeUnmount() {

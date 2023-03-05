@@ -44,4 +44,42 @@ export default class RequirementsModel {
             }
         }
     }
+
+    async saveRequirements(pathfinderId) {
+        const token = localStorage.getItem("token");
+
+        const concludedRequirements = this.$requirements.filter(requirement => requirement.state).map(requirement => {
+            return {
+                id: requirement.id,
+                requirementGroupId: requirement.requirementGroupId,
+                classId: requirement.classId,
+                content: requirement.content
+            }
+        });
+
+        const notConcludedRequirements = this.$requirements.filter(requirement => !requirement.state).map(requirement => {
+            return {
+                id: requirement.id,
+                requirementGroupId: requirement.requirementGroupId,
+                classId: requirement.classId,
+                content: requirement.content
+            }
+        });
+
+        const requestBody = {
+            pathfinderId,
+            concludedRequirements,
+            notConcludedRequirements
+        }
+        
+        const saveRequirementsResponse = await fetch(`${URL_API}/requirementPathfinder/save`, {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(requestBody)
+        });
+    }
 }
