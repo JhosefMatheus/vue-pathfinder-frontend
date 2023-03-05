@@ -11,21 +11,19 @@
         components: {
             SubRequirements
         },
-        data() {
-            return {
-                concluded: false
-            }
+        async beforeCreate() {
+            await this.requirement.setRequirementState(this.$route.params.pathfinderId);
         }
     }
 </script>
 
 <template>
-    <li class="my-4" :class="{concluded}">
+    <li class="my-4" :class="{concluded: requirement.state}">
         <div class="w-100 d-flex justify-content-between align-items-start">
             <p>
                 {{ requirement.content }}
             </p>
-            <input type="checkbox" v-model="concluded" />
+            <input type="checkbox" v-model="requirement.state" />
         </div>
         <SubRequirements
             :requirementId="requirement.id"
@@ -39,6 +37,6 @@
     }
 
     .concluded {
-        text-decoration: line-through;  
+        text-decoration: line-through;
     }
 </style>

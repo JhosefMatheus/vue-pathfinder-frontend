@@ -25,15 +25,15 @@
 
 <template>
     <ol type="I" class="mt-4">
-            <li v-for="requirementGroup in requirementGroups.requirementGroups" :key="requirementGroup.id" class="requirementGroup">
-                <strong>
-                    {{ requirementGroup.name }}
-                </strong>
-                <Requirements
-                    :classId="this.$route.params.classId"
-                    :requirementGroupId="requirementGroup.id"
-                />
-            </li>
+        <li v-for="requirementGroup in requirementGroups.requirementGroups" :key="requirementGroup.id" class="requirementGroup">
+            <strong>
+                {{ requirementGroup.name }}
+            </strong>
+            <Requirements
+                :classId="this.$route.params.classId"
+                :requirementGroupId="requirementGroup.id"
+            />
+        </li>
     </ol>
 </template>
 

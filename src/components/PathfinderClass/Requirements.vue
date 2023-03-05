@@ -23,6 +23,8 @@
             await newRequirements.getRequirements(this.classId, this.requirementGroupId);
 
             this.requirements = newRequirements.requirements;
+            
+            this.$store.state.requirements = this.$store.state.requirements.concat(newRequirements.requirements);
         }
     }
 </script>

@@ -8,7 +8,8 @@ import "./assets/main.css";
 const store = createStore({
   state() {
     return {
-      user: null
+      user: null,
+      requirements: []
     }
   },
   mutations: {
